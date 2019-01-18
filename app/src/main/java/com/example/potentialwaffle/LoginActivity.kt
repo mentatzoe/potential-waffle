@@ -23,6 +23,7 @@ import android.widget.TextView
 
 import java.util.ArrayList
 import android.Manifest.permission.READ_CONTACTS
+import android.content.Intent
 
 import kotlinx.android.synthetic.main.activity_login.*
 
@@ -137,9 +138,11 @@ class LoginActivity : AppCompatActivity(), LoaderCallbacks<Cursor> {
     } else {
       // Show a progress spinner, and kick off a background task to
       // perform the user login attempt.
-      showProgress(true)
-      mAuthTask = UserLoginTask(emailStr, passwordStr)
-      mAuthTask!!.execute(null as Void?)
+      val intent = Intent(this, ChallengeListActivity::class.java)
+      startActivity(intent)
+/*      showProgress(true)
+//      mAuthTask = UserLoginTask(emailStr, passwordStr)
+      mAuthTask!!.execute(null as Void?)*/
     }
   }
 
