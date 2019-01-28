@@ -30,7 +30,6 @@ class ChallengeDetailFragment : Fragment() {
         // arguments. In a real-world scenario, use a Loader
         // to load content from a content provider.
         item = DummyContent.ITEM_MAP[it.getString(ARG_ITEM_ID)]
-        activity?.toolbar_layout?.title = item?.content
       }
     }
   }
@@ -39,6 +38,8 @@ class ChallengeDetailFragment : Fragment() {
     inflater: LayoutInflater, container: ViewGroup?,
     savedInstanceState: Bundle?
   ): View? {
+
+    //todo: inflate a specific fragment depending on the type of question
     val rootView = inflater.inflate(R.layout.challenge_detail, container, false)
 
     // Show the dummy content as text in a TextView.

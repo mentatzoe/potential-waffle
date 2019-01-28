@@ -17,6 +17,17 @@
   <string name="error_incorrect_password">This password is incorrect</string>
   <string name="error_field_required">This field is required</string>
   <string name="permission_rationale">"Contacts permissions are needed for providing email completions."</string>
+  <!-- challenges -->
   <string name="title_challenge_list">Challenges</string>
   <string name="title_challenge_detail">Challenge Detail</string>
+  <string name="select_challenge">#select access node#</string>
+  <!-- Base layout strings -->
+  <string name="top_text">current tasks: 180
+    0 errors - 3 warnings
+    Authentication accepted!
+    generating security protocol&#8230; requesting challenges&#8230;
+  </string>
+  <string name="system_status">system status: warning</string>
+  <string name="version">version: alpha 2.8</string>
+
 </resources>

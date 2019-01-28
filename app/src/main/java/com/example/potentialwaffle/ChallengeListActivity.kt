@@ -12,6 +12,7 @@ import android.widget.TextView
 import androidx.core.app.NavUtils
 import androidx.appcompat.app.ActionBar
 import android.view.MenuItem
+import androidx.recyclerview.widget.GridLayoutManager
 
 import com.example.potentialwaffle.dummy.DummyContent
 import kotlinx.android.synthetic.main.activity_challenge_list.*
@@ -38,13 +39,7 @@ class ChallengeListActivity : AppCompatActivity() {
     super.onCreate(savedInstanceState)
     setContentView(R.layout.activity_challenge_list)
 
-    setSupportActionBar(toolbar)
-    toolbar.title = title
 
-    fab.setOnClickListener { view ->
-      Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-        .setAction("Action", null).show()
-    }
     // Show the Up button in the action bar.
     supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
@@ -73,9 +68,10 @@ class ChallengeListActivity : AppCompatActivity() {
       }
       else -> super.onOptionsItemSelected(item)
     }
-
   private fun setupRecyclerView(recyclerView: RecyclerView) {
+
     recyclerView.adapter = SimpleItemRecyclerViewAdapter(this, DummyContent.ITEMS, twoPane)
+    recyclerView.layoutManager = GridLayoutManager(this, 3)
   }
 
   class SimpleItemRecyclerViewAdapter(
@@ -90,22 +86,11 @@ class ChallengeListActivity : AppCompatActivity() {
     init {
       onClickListener = View.OnClickListener { v ->
         val item = v.tag as DummyContent.DummyItem
-        if (twoPane) {
-          val fragment = ChallengeDetailFragment().apply {
-            arguments = Bundle().apply {
-              putString(ChallengeDetailFragment.ARG_ITEM_ID, item.id)
-            }
-          }
-          parentActivity.supportFragmentManager
-            .beginTransaction()
-            .replace(R.id.challenge_detail_container, fragment)
-            .commit()
-        } else {
+          //TODO: Implement lock/unlock check here and navigate to pertinent activity
           val intent = Intent(v.context, ChallengeDetailActivity::class.java).apply {
             putExtra(ChallengeDetailFragment.ARG_ITEM_ID, item.id)
           }
           v.context.startActivity(intent)
-        }
       }
     }
 
@@ -117,8 +102,9 @@ class ChallengeListActivity : AppCompatActivity() {
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
       val item = values[position]
-      holder.idView.text = item.id
-      holder.contentView.text = item.content
+      //TODO: Configuration of each item within the recyclerview
+      //holder.idView.text = item.id
+      //holder.contentView.text = item.content
 
       with(holder.itemView) {
         tag = item
@@ -129,8 +115,9 @@ class ChallengeListActivity : AppCompatActivity() {
     override fun getItemCount() = values.size
 
     inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-      val idView: TextView = view.id_text
-      val contentView: TextView = view.content
+      //TODO: Configuration of each item within the recyclerview
+      //val idView: TextView = view.id_text
+      //val contentView: TextView = view.content
     }
   }
 }
