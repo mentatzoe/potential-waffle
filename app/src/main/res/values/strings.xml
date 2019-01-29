@@ -29,5 +29,13 @@
   </string>
   <string name="system_status">system status: warning</string>
   <string name="version">version: alpha 2.8</string>
-
+  <!-- Challenge texts -->
+  <string name="security_breach">security breach alert!</string>
+  <string name="challenger_name">challenger name:</string>
+  <string name="button_accept_challenge">Accept Challenge</string>
+  <string name="button_continue">Proceed</string>
+  <string name="button_option_A">Option A</string>
+  <string name="button_option_B">Option B</string>
+  <string name="button_option_C">Option C</string>
+  <string name="button_option_D">Option D</string>
 </resources>

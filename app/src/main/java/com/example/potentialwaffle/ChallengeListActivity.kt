@@ -4,28 +4,18 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.RecyclerView
-import com.google.android.material.snackbar.Snackbar
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.core.app.NavUtils
-import androidx.appcompat.app.ActionBar
 import android.view.MenuItem
 import androidx.recyclerview.widget.GridLayoutManager
 
-import com.example.potentialwaffle.dummy.DummyContent
-import kotlinx.android.synthetic.main.activity_challenge_list.*
-import kotlinx.android.synthetic.main.challenge_list_content.view.*
+import com.example.potentialwaffle.entities.ChallengeContent
 import kotlinx.android.synthetic.main.challenge_list.*
 
 /**
- * An activity representing a list of Pings. This activity
- * has different presentations for handset and tablet-size devices. On
- * handsets, the activity presents a list of items, which when touched,
- * lead to a [ChallengeDetailActivity] representing
- * item details. On tablets, the activity presents the list of items and
- * item details side-by-side using two vertical panes.
+ * An activity representing a list of Pings.
  */
 class ChallengeListActivity : AppCompatActivity() {
 
@@ -70,13 +60,13 @@ class ChallengeListActivity : AppCompatActivity() {
     }
   private fun setupRecyclerView(recyclerView: RecyclerView) {
 
-    recyclerView.adapter = SimpleItemRecyclerViewAdapter(this, DummyContent.ITEMS, twoPane)
+    recyclerView.adapter = SimpleItemRecyclerViewAdapter(this, ChallengeContent.ITEMS, twoPane)
     recyclerView.layoutManager = GridLayoutManager(this, 3)
   }
 
   class SimpleItemRecyclerViewAdapter(
     private val parentActivity: ChallengeListActivity,
-    private val values: List<DummyContent.DummyItem>,
+    private val values: List<ChallengeContent.ChallengeItem>,
     private val twoPane: Boolean
   ) :
     RecyclerView.Adapter<SimpleItemRecyclerViewAdapter.ViewHolder>() {
@@ -85,7 +75,7 @@ class ChallengeListActivity : AppCompatActivity() {
 
     init {
       onClickListener = View.OnClickListener { v ->
-        val item = v.tag as DummyContent.DummyItem
+        val item = v.tag as ChallengeContent.ChallengeItem
           //TODO: Implement lock/unlock check here and navigate to pertinent activity
           val intent = Intent(v.context, ChallengeDetailActivity::class.java).apply {
             putExtra(ChallengeDetailFragment.ARG_ITEM_ID, item.id)

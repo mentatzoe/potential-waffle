@@ -5,32 +5,71 @@
                                                      android:layout_width="match_parent"
                                                      android:layout_height="match_parent"
                                                      android:fitsSystemWindows="true"
-                                                     tools:context=".ChallengeDetailActivity"
-                                                     tools:ignore="MergeRootFrame">
-
-  <com.google.android.material.appbar.AppBarLayout
-    android:id="@+id/app_bar"
-    android:layout_width="match_parent"
-    android:layout_height="@dimen/app_bar_height"
-    android:fitsSystemWindows="true"
-    android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
-
-  </com.google.android.material.appbar.AppBarLayout>
-
-  <androidx.core.widget.NestedScrollView
-    android:id="@+id/challenge_detail_container"
+                                                     android:background="@drawable/background"
+                                                     tools:context=".ChallengeListActivity">
+  <LinearLayout
+    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
+    android:layout_margin="16dp"
+    android:paddingTop="16dp"
+    android:paddingHorizontal="10dp"
+    android:background="@drawable/outer_rectangle">
 
-  <com.google.android.material.floatingactionbutton.FloatingActionButton
-    android:id="@+id/fab"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_gravity="center_vertical|start"
-    android:layout_margin="@dimen/fab_margin"
-    app:srcCompat="@android:drawable/stat_notify_chat"
-    app:layout_anchor="@+id/challenge_detail_container"
-    app:layout_anchorGravity="top|end"/>
+    <TextView
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_marginTop="16dp"
+      android:layout_marginHorizontal="16dp"
+      android:fontFamily="@font/ehsmb"
+      android:text="@string/top_text"
+      android:textColor="@color/textColor"/>
 
+    <FrameLayout
+      android:id="@+id/challenge_detail_container"
+      android:layout_width="wrap_content"
+      android:layout_height="400dp"
+      android:layout_margin="30dp"
+      android:paddingTop="5dp"
+      android:paddingBottom="10dp"
+      app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
+
+    <RelativeLayout
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content">
+      <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_alignParentBottom="true"
+        android:layout_centerInParent="true">
+        <TextView
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_marginTop="16dp"
+          android:textAlignment="center"
+          android:fontFamily="@font/ehsmb"
+          android:text="@string/system_status"
+          android:textColor="@color/textColor"/>
+        <TextView
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_marginTop="16dp"
+          android:textAlignment="center"
+          android:fontFamily="@font/ehsmb"
+          android:text="@string/version"
+          android:textColor="@color/textColor"
+          android:layout_alignParentBottom="true"/>
+      </LinearLayout>
+    </RelativeLayout>
+  </LinearLayout>
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+
+  <!--   <androidx.core.widget.NestedScrollView
+      android:id="@+id/challenge_detail_container"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:background="@drawable/challenges_background"
+      app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
+      -->

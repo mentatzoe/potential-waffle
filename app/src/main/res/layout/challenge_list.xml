@@ -6,14 +6,9 @@
                                            android:name="com.example.potentialwaffle.ChallengeListFragment"
                                            android:layout_width="match_parent"
                                            android:layout_height="311dp"
-                                           tools:context=".ChallengeListActivity"
                                            android:background="@drawable/challenges_background"
                                            android:paddingLeft="16dp"
                                            android:paddingRight="16dp"
                                            android:paddingTop="6dp"
                                            android:paddingBottom="5dp"
                                            />
-
-<!--
-
--->

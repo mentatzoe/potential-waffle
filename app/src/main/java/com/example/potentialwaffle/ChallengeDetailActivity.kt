@@ -2,10 +2,10 @@ package com.example.potentialwaffle
 
 import android.content.Intent
 import android.os.Bundle
-import com.google.android.material.snackbar.Snackbar
 import androidx.appcompat.app.AppCompatActivity
 import android.view.MenuItem
-import kotlinx.android.synthetic.main.activity_challenge_detail.*
+import androidx.fragment.app.Fragment
+import com.example.potentialwaffle.util.ChangeFragmentListener
 
 /**
  * An activity representing a single Challenge detail screen. This
@@ -13,19 +13,15 @@ import kotlinx.android.synthetic.main.activity_challenge_detail.*
  * item details are presented side-by-side with a list of items
  * in a [ChallengeListActivity].
  */
-class ChallengeDetailActivity : AppCompatActivity() {
+class ChallengeDetailActivity : AppCompatActivity(), ChangeFragmentListener {
+
+  val fragmentManager = supportFragmentManager
+  val fragmentTransaction = fragmentManager.beginTransaction()
+  val FRAGMENT_CONTAINER = R.id.challenge_detail_container
 
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
     setContentView(R.layout.activity_challenge_detail)
-
-    fab.setOnClickListener { view ->
-      Snackbar.make(view, "Replace with your own detail action", Snackbar.LENGTH_LONG)
-        .setAction("Action", null).show()
-    }
-
-    // Show the Up button in the action bar.
-    supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
     // savedInstanceState is non-null when there is fragment state
     // saved from previous configurations of this activity
@@ -68,4 +64,17 @@ class ChallengeDetailActivity : AppCompatActivity() {
       }
       else -> super.onOptionsItemSelected(item)
     }
+
+  override fun onChangeFragment(fragmentName: String, fragmentBundle: Bundle) {
+    val newFragment = Class.forName("com.example.potentialwaffle.$fragmentName").newInstance() as Fragment
+
+    if (!fragmentBundle.isEmpty) {
+      newFragment.arguments = fragmentBundle
+    }
+
+    val transaction = supportFragmentManager.beginTransaction()
+    transaction.replace(FRAGMENT_CONTAINER, newFragment)
+    transaction.addToBackStack(null)
+    transaction.commit()
+  }
 }
